@@ -391,13 +391,33 @@ Almost every programming language has a built-in linked list but JavaScript does
 
 Since linked lists aren’t a native data structure in JavaScript, so to implement it, you need to create a custom class and object for it. Now this will mean that the differences and benefits mentioned above may not be completely accurate since, under the hood, it would be treated as a different data structure.
 
-<br>
-
-### Creating a node in JS
+### What linkedlist looks like in JS
 
 <br>
 
-<img border="rounded" style="width: 55%" src="/linkedListNode.png" alt="Class of Linked List Node" >
+<img border="rounded" style="width: 40%; max-height: 80%" src="/linkedListObject.png" alt="What linkedlist looks like in JS" >
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+
+<!-- linkedListNode -->
+
+## Creating a node in JS (using classes)
+
+<br>
+
+<img border="rounded" style="width: 70%" src="/linkedListNode.png" alt="Class of Linked List Node">
 
 <style>
     h2 {
