@@ -77,8 +77,8 @@ h1 {
 
 <br>
 <div style="display: flex; justify-content: space-around;">
-  <img border="rounded" style="width: 40%; " src="/images/linkedListIllustration.jpg" alt="LinkedListIllustration">
-  <img border="rounded" style="width: 55%; " src="/images/linkedList.png" alt="LinkedList">
+  <img border="rounded" style="width: 40%; " src="/public/linkedListIllustration.jpg" alt="LinkedListIllustration">
+  <img border="rounded" style="width: 55%; " src="/public/linkedList.png" alt="LinkedList">
 </div>
 <br>
 
@@ -138,10 +138,10 @@ Lets say we have the following list of todos - Brunch, Bocce, Tea
 <br>
 
 <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-  <img border="rounded" style="width: 23%; margin: 1%;" src="/images/array1.png" alt="Array 1 ">
-  <img border="rounded" style="width: 23%; margin: 1%;" src="/images/array2.png" alt="Array 2">
-  <img border="rounded" style="width: 23%; margin: 1%;" src="/images/list1.png" alt="List 1">
-  <img border="rounded" style="width: 23%; margin: 1%;" src="/images/list2.png" alt="List 2">
+  <img border="rounded" style="width: 23%; margin: 1%;" src="/public/array1.png" alt="Array 1 ">
+  <img border="rounded" style="width: 23%; margin: 1%;" src="/public/array2.png" alt="Array 2">
+  <img border="rounded" style="width: 23%; margin: 1%;" src="/public/list1.png" alt="List 1">
+  <img border="rounded" style="width: 23%; margin: 1%;" src="/public/list2.png" alt="List 2">
 </div>
 <br>
 
@@ -219,7 +219,7 @@ Linked List is a dynamic data structure the size increases or decreases as per t
 
 <br>
 
-<img border="rounded" style="width: 65%" src="/images/differentTypesOfLinkedList.webp" alt="DifferentTypesOfLinkedList">
+<img border="rounded" style="width: 65%" src="/public/differentTypesOfLinkedList.webp" alt="DifferentTypesOfLinkedList">
 <br>
 
 - Singly / unidirectional linked list.
@@ -244,7 +244,7 @@ Linked List is a dynamic data structure the size increases or decreases as per t
 ## Singly / unidirectional linked list
 
 <br>
-<img border="rounded" style="width: 65%" src="/images/unidirectionalLinkedlist.png" alt="UnidirectionalLinkedlist">
+<img border="rounded" style="width: 65%" src="/public/unidirectionalLinkedlist.png" alt="UnidirectionalLinkedlist">
 
 <br>
 
@@ -290,7 +290,7 @@ For singly linked lists, the time complexity for insertion or deletion at any ar
 ## Doubly / bidirectional linked list
 
 <br>
-<img border="rounded" style="width: 65%" src="/images/bidirectionalLinkedList.png" alt="BidirectionalLinkedList">
+<img border="rounded" style="width: 65%" src="/public/bidirectionalLinkedList.png" alt="BidirectionalLinkedList">
 <br>
 
 - Each node contains two pointers, one to the next node and one to the previous node.
@@ -340,7 +340,7 @@ However, in a doubly linked list, each node contains references to both the next
 ## Circular linked list
 
 <br>
-<img border="rounded" style="width: 65%" src="/images/circularLinkedList2.png" alt="CircularLinkedList">
+<img border="rounded" style="width: 65%" src="/public/circularLinkedList2.png" alt="CircularLinkedList">
 <br>
 
 - The last node points to the first node, forming a loop.
@@ -395,7 +395,7 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 <br>
 
-<img border="rounded" style="width: 40%; max-height: 80%" src="/images/linkedListObject.png" alt="What linkedlist looks like in JS" >
+<img border="rounded" style="width: 40%; max-height: 80%" src="/public/linkedListObject.png" alt="What linkedlist looks like in JS" >
 
 <style>
     h2 {
@@ -417,7 +417,7 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 <br>
 
-<img border="rounded" style="width: 70%" src="/images/linkedListNode.png" alt="Class of Linked List Node">
+<img border="rounded" style="width: 70%" src="/public/linkedListNode.png" alt="Class of Linked List Node">
 
 <style>
     h2 {
@@ -437,7 +437,7 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 <br>
 
-<img border="rounded" style="width: 50%; max-height: 90%" src="/images/linkedListClassJs.png" alt="Class of Linked List ">
+<img border="rounded" style="width: 50%; max-height: 90%" src="/public/linkedListClassJs.png" alt="Class of Linked List ">
 
 <style>
     h2 {
@@ -502,7 +502,7 @@ Similarly, in a music player, the playlist can be represented as a linked list. 
 
 ---
 
-<img border="rounded" style="width: 100%" src="/images/thankYou.jpeg" alt="Thank You">
+<img border="rounded" style="width: 100%" src="/public/thankYou.jpeg" alt="Thank You">
 
 <style>
 h1 {
