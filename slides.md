@@ -184,7 +184,7 @@ By using linked lists, the issue of needing contiguous memory is avoided, allowi
 
 ### Advantages
 
-Unlike arrays, linked lists are a dynamic data structure that can be resized at run-time without needing to reallocate or reorganize the entire structure; Linked lists allow for dynamic memory allocation. Nodes are not stored contiguously in memory, so they can be located anywhere in the memory which is beneficial for implementing other abstract data types such as lists, stacks, and queues;In sertion and deletion operations are efficient and can be easily implemented, particularly in the middle of the list.
+Unlike arrays, linked lists are a dynamic data structure that can be resized at run-time without needing to reallocate or reorganize the entire structure; Linked lists allow for dynamic memory allocation. Nodes are not stored contiguously in memory, so they can be located anywhere in the memory which is beneficial for implementing other abstract data types such as lists, stacks, and queues;Insertion and deletion operations are efficient and can be easily implemented, particularly in the middle of the list.
 
 ### Disadvantages
 
@@ -417,7 +417,7 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 <br>
 
-<img border="rounded" style="width: 70%" src="/images/LinkedListNode.png" alt="Class of Linked List Node">
+<img border="rounded" style="width: 70%" src="/images/linkedListNode.png" alt="Class of Linked List Node">
 
 <style>
     h2 {
@@ -459,7 +459,7 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 - Linked lists can be used to implement stack, queue, graph, hash maps and other abstract data structures.
 - Useful in applications such as web browsers and music players.
-- Can represent graphs and dynamically allocate/deallocate memory.
+- Can represent graphs and dynamically allocate/de-allocate memory.
 - In a web browser, the history can be stored as a linked list for easy navigation.
 - In a music player, the playlist can be a linked list for easy song traversal.
 
