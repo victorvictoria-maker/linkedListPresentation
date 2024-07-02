@@ -28,6 +28,12 @@ mdc: true
 
 Data Structure (Linear)
 
+### Created by <a href="https://github.com/Oluwasetemi">Ojo Oluwasetemi</a> and <a href="https://github.com/victorvictoria-maker">Victor Victoria</a>
+
+<br />
+<br />
+<a href="https://github.com/victorvictoria-maker/linkedListPresentation">Link to Repository</a>
+
 <style>
 h1 {
   background-color: #6a1b9a;
@@ -47,16 +53,17 @@ h1 {
 
 <br>
 
-- [What is linked list?](#what-is-linked-list)
-- [Arrays and Linked list](#arrays-and-linked-list)
-- [Advantages and disadvantages of linked lists over arrays](#advantages-and-disadvantages-of-linked-lists-over-arrays)
-- [Types Linked list](#types-linked-list)
-- [Singly / unidirectional linked list](#singly--unidirectional-linked-list)
-- [Doubly / bidirectional linked list](#doubly--bidirectional-linked-list)
-- [Circular linked list](#circular-linked-list)
-- [Linked list in Javascript](#linked-list-in-javascript)
-- [Applications of Linked list](#applications-of-linked-list)
-- [Questions](#questions)
+- <Link to="3">What is linked list?</Link>
+- <Link to="4">Arrays and Linked list</Link>
+- <Link to="5">Advantages and disadvantages of linked lists over arrays</Link>
+- <Link to="6">Types Linked list</Link>
+- <Link to="7">Singly / unidirectional linked list</Link>
+- <Link to="8">Doubly / bidirectional linked list</Link>
+- <Link to="9">Circular linked list</Link>
+- <Link to="10">Linked list in Javascript</Link>
+- <Link to="31">Applications of Linked list</Link>
+- <Link to="32">Questions</Link>
+- <Link to="33">Thank you</Link>
 
 <style>
 h1 {
