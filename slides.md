@@ -411,13 +411,15 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 ---
 
-<!-- linkedListNode -->
-
-## Creating a node in JS (using classes)
+## What a node and linkedlist ( collection of nodes) looks like
 
 <br>
+<img border="rounded" style="width: 40%; max-height: 60%" src="/images/nodeIllustration.png" alt="A single node illustration" >
 
-<img border="rounded" style="width: 70%" src="/images/linkedListNode.png" alt="Class of Linked List Node">
+<br>
+<br>
+
+<img border="rounded" style="width: 70%; max-height: 60%" src="/images/linkedListIllustration.png" alt="Linked list with four nodes illustration" >
 
 <style>
     h2 {
@@ -433,11 +435,63 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
 
 ---
 
-## Creating a node in JS (using the node class in the previous page)
+## Creating linkedlist in JS (using classes) - CODE
 
-<br>
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
-<img border="rounded" style="width: 50%; max-height: 90%" src="/images/linkedListClassJs.png" alt="Class of Linked List ">
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+```
 
 <style>
     h2 {
@@ -449,6 +503,1259 @@ Since linked lists aren’t a native data structure in JavaScript, so to impleme
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+
+</style>
+
+---
+
+## Appending a node to the linkedlist
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistAppend.png" alt="Linked list append illustration" >
+
+<p> When the list is not empty, the diagram above illustrates the process: a temporary pointer called  <em>prev</em> is created to traverse the list and locate the last node, allowing the new node to be appended. If the list is empty, the new node is set as the head. </p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+ em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Appending a node - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(30);
+list.append(40);
+
+// NOTE- FOUR NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log(printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+
+</style>
+
+---
+
+## Prepending a node to the linkedlist
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistPrepend.png" alt="Linked list prepend illustration" >
+
+<p>The diagram above shows the prepend process: the new node is added and set as the head of the list. </p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+</style>
+
+---
+
+## Prepending a node - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   PREPEND i.e. add new node to be start of the linked list
+  prepend(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // the new node would point to the head before the prepend
+      // operation so it can become the new head (Step 2 in the illustration)
+      newNode.next = this.head;
+
+      //   the new node becomes the head (Step 3 in the illustration)
+      this.head = newNode;
+    }
+
+    this.size++;
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.prepend(30);
+list.prepend(20);
+list.prepend(10);
+list.prepend(05);
+
+// NOTE- FOUR NODES HAVE BEEN PREPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log(printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+
+</style>
+
+---
+
+## Inserting a node at a given index of the linkedlist
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistInsert01.png" alt="Linked list inserting at a given index illustration" >
+
+<p>The diagram above shows the insertion process: <em>Inserting at index 0 is the same as prepending.</em> When the insertion index is greater than 0, a temporary pointer called <em>prev</em>  traverses to the node before the desired insertion position. In this case, to insert at index 2, prev stops at index 1. </p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+ em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Inserting a node at a given index to the linkedlist (contd.)
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistInsert02.png" alt="Linked list inserting at a given index illustration" >
+
+<p> Once in position, the prev pointer is updated to point to the new node, and the new node points to the next node, forming an updated linked list.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+ em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Inserting a node at a given index - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+
+  //   INSERT AT A GIVEN INDEX (accepts the value to be inserted and the index)
+  insert(value, index) {
+    // the index you want to insert into needs to be valid
+    if (index < 0 || index > this.size) {
+      return;
+    }
+
+    // inserting a node at index 0 is the same as prepending
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const newNode = new Node(value);
+
+      // prev is a temporary pointer to point to the node before the index
+      // we want to insert the new node (step y in the illustration)
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+
+      //   once we get the prev, we need to reorganize the node
+      // i.e. point the new node's pointer to the next node (index 2 in the illustration)
+      // and the previous node's pointer points to the new node
+      newNode.next = prev.next;
+      prev.next = newNode;
+
+      this.size++;
+    }
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(30);
+
+// NOTE- THREE NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list - ", printResult);
+
+list.insert(25, 2);
+
+// NOTE- A NODE WAS INSERTED INTO TO THE LIST AT INDEX 2
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list after inserting 25 at position 2 - ", printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+
+</style>
+
+---
+
+## Removing a node at a given index of the linkedlist
+
+<img border="rounded" style="width: 65%; max-height: 85%" src="/images/LinkledlistRemove03.png" alt="Linked list removal at index zero illustration" >
+
+<p>The diagram above illustrates the removal of the node at index 0 (the first node): The node at index 1 becomes the new head, and the first node is removed.  </p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+</style>
+
+---
+
+## Removing a node at a given index greater than 0
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistRemove01.png" alt="Linked list removal at a given index greate then zero illustration" >
+
+<p>The diagram above illustrates the removal process at an index greater than 0: A temporary pointer <em>prev</em> is created to traverse to the node before the one we want to remove. The node to be removed is assigned to another temporary pointer <em>remv</em>. </p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+ em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Removing a node at a given index greater than 0 (contd.)
+
+<img border="rounded" style="width: 60%; max-height: 80%" src="/images/LinkledlistRemove02.png" alt="Linked list removal at a given index greate then zero illustration" >
+
+<p>The prev pointer then skips the removed node and points to the node after it, reconnecting the list and forming an updated list.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+</style>
+
+---
+
+## Removing a node at a given index - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+
+  //   REMOVE A NODE GIVEN THE INDEX
+  removeNode(index) {
+    // the index you want to remove from the list needs to be valid
+    if (index < 0 || index > this.size) {
+      return null;
+    }
+
+    let removedNode;
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      // prev is a temporary pointer to point to the node before the index
+      // we want to remove the node (step y in the illustration)
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+
+      // once we get the prev, we need to reorganize the node
+      // i.e. point the prev node's pointer to the node after removal (index 2 in the illustration)
+      removedNode = prev.next;
+      prev.next = removedNode.next;
+    }
+
+    this.size--;
+    return removedNode.value;
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(25);
+list.append(30);
+
+// NOTE- FOUR NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list - ", printResult);
+
+list.removeNode(2);
+
+// NOTE- A NODE WAS REMOVED FROM THE LIST AT INDEX 2
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list after the node at index 2 - ", printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+</style>
+
+---
+
+## Removing a node based on its value rather than its index - CODE
+
+<em>The previous method removes a node using its index, whereas this method removes a node based solely on its value, if present. </em>
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+
+  //   REMOVE A NODE GIVEN THE VALUE
+  removeUsingValue(value) {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    // if the value is the first node
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.size--;
+      return `Value ${value} has been successfully removed`;
+    } else {
+      // prev is a temporary pointer to point to the node before the index
+      // we want to remove the node (step y in the illustration)
+      let prev = this.head;
+      while (prev.next && prev.next.value !== value) {
+        prev = prev.next;
+      }
+
+      // once we get the prev, we need to reorganize the node (index 2 in the illustration)
+      if (prev.next) {
+        const removedNode = prev.next;
+        prev.next = removedNode.next;
+        this.size--;
+        return `Value ${value} has been successfully removed`;
+      }
+
+      return null;
+    }
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(25);
+list.append(30);
+
+// NOTE- FOUR NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list - ", printResult);
+
+list.removeUsingValue(25);
+
+// NOTE- A NODE WITH VALUE 25 WAS REMOVED FROM THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list after removing node with value 25 - ", printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen ;
+  max-height: 400px;
+
+}
+
+</style>
+
+---
+
+## Searching for a value in the list - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+
+  //   SEARCH FOR A VALUE
+  //   return -1 if not present or return the index of the value
+  search(value) {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    let i = 0;
+    let curr = this.head;
+    while (curr) {
+      if (curr.value === value) {
+        return i;
+      }
+
+      curr = curr.next;
+      i++;
+    }
+
+    return -1;
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(25);
+list.append(30);
+
+// NOTE- FOUR NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list - ", printResult);
+
+let valueToSearch = list.search(22);
+let valuePresent = valueToSearch !== -1 ? true : false;
+// 22 is not in the list
+console.log("Is 22 present in the list? - ", valuePresent);
+
+valueToSearch = list.search(25);
+valuePresent = valueToSearch !== -1 ? true : false;
+// 25 is in the list
+console.log("Is 25 present in the list? - ", valuePresent);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
+</style>
+
+---
+
+## Reversing the list
+
+<br/>
+
+<img border="rounded" style="width: 65%; max-height: 90%" src="/images/LinkedListReverse.png" alt="Linked list reversal illustration" >
+
+<br/>
+
+<p>This is a summary illustration of what happens during reversal.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+</style>
+
+---
+
+## Reversing the list - explanation
+
+<br/>
+
+<img border="rounded" style="width: 65%; max-height: 90%" src="/images/LinkedListReverse01.png" alt="Linked list reversal illustration" >
+
+<br/>
+
+<p>Two temporary pointers, <em>prev</em> initialized to null, and <em>curr</em>, are created.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+  em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Reversing the list - explanation (contd.)
+
+<br/>
+
+<img border="rounded" style="width: 50%; max-height: 65%" src="/images/LinkedListReverse02.png" alt="Linked list reversal illustration" >
+
+<br/>
+
+<p>Additionally, two other pointers, <em>curr</em> and <em>next</em>, are instantiated. Curr holds the node currently being processed. The reversal proceeds node by node: Curr flips the current node to point to prev (which is null initially for the first node), and next holds the next node to be reversed. After the first reversal, prev, curr, and next all move to their next nodes so the process can repeat until the entire list is reversed.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+  em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Reversing the list - explanation (contd.)
+
+<br/>
+
+<img border="rounded" style="width: 65%; max-height: 90%" src="/images/LinkedListReverse03.png" alt="Linked list reversal illustration" >
+
+<br/>
+
+<p>After completing all reversals, when curr points to null, prev becomes the new head of the list.</p>
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  }
+
+  em {
+    background-color: #6a1b9a;
+  }
+</style>
+
+---
+
+## Reversing the list - CODE
+
+```js {monaco-run}
+// NODE CLASS - the fragment of a linkedlist
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+// LINKED LIST CLASS
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+
+  // PRINT THE VALUE IN THE LINKEDLIST
+  print() {
+    if (this.isEmpty()) {
+      return "List is empty";
+    } else {
+      // curr is a temporary pointer
+      let curr = this.head;
+      let listValues = "";
+
+      //   while current is not null i.e. it  has a value
+      while (curr) {
+        listValues += `${curr.value} `;
+
+        // to get access to the next nodes value
+        curr = curr.next;
+      }
+
+      return listValues;
+    }
+  }
+
+  //   APPEND i.e. add new node to be end of the linked list
+  append(value) {
+    const newNode = new Node(value);
+
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      // prev is a temporary pointer
+      let prev = this.head;
+
+      //   the while loop would exit at the last node where next points to null
+      while (prev.next) {
+        prev = prev.next;
+      }
+
+      //   the last node would point to the new node
+      prev.next = newNode;
+    }
+
+    this.size++;
+  }
+
+  reverse() {
+    let prev = null;
+    let curr = this.head;
+    while (curr) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    this.head = prev;
+  }
+}
+
+// NOTE- THE LIST IS PRESENTLY EMPTY
+const list = new LinkedList();
+let isListEmpty = list.isEmpty();
+let listSize = list.getSize();
+let printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+
+list.append(10);
+list.append(20);
+list.append(25);
+list.append(30);
+
+// NOTE- FOUR NODES HAVE BEEN APPENDED TO THE LIST
+isListEmpty = list.isEmpty();
+listSize = list.getSize();
+printResult = list.print();
+
+console.log("Is the list empty? ", isListEmpty);
+console.log("The list size is - ", listSize);
+console.log("The list - ", printResult);
+
+list.reverse();
+
+printResult = list.print();
+console.log("The list after reversal - ", printResult);
+```
+
+<style>
+    h2 {
+  background-color: #6a1b9a;
+  background-image: linear-gradient(45deg, #9c27b0 10%, #4a148c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+
+.slidev-monaco-container {
+  @apply overflow-scroll max-h-screen-sm ;
+  max-height: 450px;
+
+}
+
 </style>
 
 ---
